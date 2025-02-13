@@ -24,13 +24,11 @@ encoded_cat_Y = tensorflow.keras.utils.to_categorical(encoded_Y)
 def build_model():
 	# create model
 	model = Sequential()
-	model.add(Dense(16, input_dim=4, activation='relu'))
+	model.add(Dense(4, input_dim=4, activation='relu'))
 	model.add(Dense(3, activation='softmax'))
 	# Compile model
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 	return model
 
 iris_classifier = build_model()
-iris_classifier.fit(X, encoded_cat_Y, epochs=128)
-
-iris_classifier.save('iris_classifier.h5')
+iris_classifier.fit(X, encoded_cat_Y, epochs=64)
